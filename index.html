@@ -1,5 +1,4 @@
-
-<html ng-app="Remove Comments Application">
+<html ng-app="RemComApp">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +29,9 @@
 
 	  gtag('config', 'UA-107779961-1');
 	</script>
+
+    
+    
     <script>
         angular.module('RemComApp', [])
             .controller('RemComController', function($scope) {
@@ -157,18 +159,25 @@
 
                         finaltext = RemCom.arr.join('\n');
                     }
+
+
                     while (finaltext.includes('\n\n\n')) {
                         finaltext = finaltext.replace('\n\n\n', '\n\n');
                     }
 					while (finaltext[0] == '\n') {
                         finaltext = finaltext.slice(1);
                     }
+
                     RemCom.appText = '';
                     RemCom.arr = [];
                     RemCom.appText = finaltext;
                 };
+
             });
+
+
     </script>
+
     <style>
         body {background: #333;}
         input, textarea {border-radius:0 !important; font-family:monospace;}
@@ -192,22 +201,28 @@
         }
         .navbar-brand {color: #fff !important;}
     </style>
+
 </head>
+
 <body>
+
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container" style="padding-left:0;">
         <div class="navbar-header">
             <a class="navbar-brand" href="#"><span style="font-size:22px; font-weight:bold; color:#ffd400;">Remove Comments</span><span class="hidden-xs"> - A Comment Remover For Almost Any Language</span></a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right">    
             <li>
                 <p class="navbar-btn">
+<!--                    social btns-->
                 </p>
             </li>
         </ul>
     </div>
 </nav>
+
 <div class="container" ng-controller="RemComController as RemCom">
+
     <form ng-submit="RemCom.split()">
         <div class="row well well-sm">
             <div class="row">
@@ -258,10 +273,17 @@
             <div class="form-group">
                 <textarea class="form-control" id="apptext" ng-model="RemCom.appText" rows="10" placeholder="Paste your code here"></textarea>
             </div>
-            <div style="color:#555;"><b>Mini Project By :</b> • Pranav Tatavarthy [RA2011031010011] • Prithvi Singh Kirar [RA2011031010023].</div>
+            <div style="color:#555;"><b>Assumptions:</b> Syntactically correct code • Strings enclosed in single or double quotes • At most 1 <i>redundant</i> escape symbol.</div>
         </div>
     </form>
+
+<!--        <p ng-repeat="n in RemCom.arr track by $index">{{n}}</p>-->
+
 </div>
+
+
+<!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>
